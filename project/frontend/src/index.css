@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #030712;
+    color: #f1f5f9;
+    font-family: 'Inter', sans-serif;
+  }
+}
+
+/* Tactical HUD & Glassmorphic Utilities */
+.glass-panel {
+  background: rgba(7, 15, 30, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 242, 254, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background: rgba(11, 22, 44, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(14, 165, 233, 0.12);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(0, 242, 254, 0.4);
+  box-shadow: 0 12px 28px -6px rgba(0, 242, 254, 0.12);
+  transform: translateY(-2px);
+}
+
+.hud-border {
+  position: relative;
+}
+
+.hud-border::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #00f2fe;
+  border-left: 2px solid #00f2fe;
+  pointer-events: none;
+}
+
+.hud-border::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-bottom: 2px solid #00f2fe;
+  border-right: 2px solid #00f2fe;
+  pointer-events: none;
+}
+
+/* Sonar Grid Background */
+.sonar-grid {
+  background-image: 
+    linear-gradient(rgba(0, 242, 254, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 242, 254, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bathy-contour {
+  background-image: radial-gradient(circle at 50% 50%, rgba(0, 242, 254, 0.08) 0%, transparent 60%);
+}
+
+/* Custom Tactical Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #070f1e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #142a4b;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00f2fe;
+}
+
+/* Leaflet Dark Customization */
+.leaflet-container {
+  background: #070f1e !important;
+  font-family: inherit;
+}
+
+.leaflet-popup-content-wrapper {
+  background: #0b162c !important;
+  color: #f1f5f9 !important;
+  border: 1px solid rgba(0, 242, 254, 0.3) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.8) !important;
+}
+
+.leaflet-popup-tip {
+  background: #0b162c !important;
+}
+
+/* Print Styling for Report Export */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .glass-panel, .glass-card {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+  }
+}
